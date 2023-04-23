@@ -24,10 +24,3 @@ export class Agents extends React.Component<{}> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  viewContainer: {
-    flex: 1,
-    alignItems: 'stretch',
-  },
-});

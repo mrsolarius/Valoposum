@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 class Header extends React.Component<{title: string; imageUrl: string}> {
   render() {
-    let {title, imageUrl} = this.props;
+    let {title} = this.props;
     return (
       <View style={styles.header}>
         {/*<Image style={styles.image} source={{uri: imageUrl}} />*/}

@@ -13,19 +13,8 @@ import {Maps} from './screens/Maps';
 import {Weapons} from './screens/Weapons';
 import {Agents} from './screens/Agents/Agents';
 import {Skins} from './screens/Skins';
-import AgentsList from './screens/Agents/subview/AgentsList';
-import AgentDetail from './screens/Agents/subview/AgentDetail';
-import {Agent} from './services/models/valorant-agents';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Tab = createBottomTabNavigator();
-
-export type RouteStackParamList = {
-  AgentsList: undefined;
-  AgentDetail: {item: Agent};
-};
-
-const Stack = createNativeStackNavigator<RouteStackParamList>();
 class App extends Component {
   render() {
     return (
