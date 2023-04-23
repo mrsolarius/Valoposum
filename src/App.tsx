@@ -11,10 +11,21 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Maps} from './screens/Maps';
 import {Weapons} from './screens/Weapons';
-import {Agents} from './screens/Agents';
+import {Agents} from './screens/Agents/Agents';
 import {Skins} from './screens/Skins';
+import AgentsList from './screens/Agents/subview/AgentsList';
+import AgentDetail from './screens/Agents/subview/AgentDetail';
+import {Agent} from './services/models/valorant-agents';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Tab = createBottomTabNavigator();
+
+export type RouteStackParamList = {
+  AgentsList: undefined;
+  AgentDetail: {item: Agent};
+};
+
+const Stack = createNativeStackNavigator<RouteStackParamList>();
 class App extends Component {
   render() {
     return (
@@ -43,6 +54,7 @@ class App extends Component {
               // You can return any component that you like here!
               return <Ionicons name={iconName} size={30} color="#900" />;
             },
+            headerShown: false,
             tabBarActiveTintColor: 'tomato',
             tabBarInactiveTintColor: 'gray',
           })}>
