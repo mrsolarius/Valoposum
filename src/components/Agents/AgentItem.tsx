@@ -1,17 +1,19 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Agent} from '../../services/models/valorant-agents';
 
-function AgentItem(props: {item: Agent}) {
-  let {item} = props;
+function AgentItem(props: {item: Agent; onPress: (item: Agent) => void}) {
+  let {item, onPress} = props;
   return (
-    <View style={styles.item}>
-      <Image source={{uri: item.displayIcon}} style={styles.icon} />
-      <View style={styles.details}>
-        <Text style={styles.name}>{item.displayName}</Text>
-        <Text style={styles.role}>{item.role.displayName}</Text>
+    <TouchableOpacity onPress={() => onPress(item)}>
+      <View style={styles.item}>
+        <Image source={{uri: item.displayIcon}} style={styles.icon} />
+        <View style={styles.details}>
+          <Text style={styles.name}>{item.displayName}</Text>
+          <Text style={styles.role}>{item.role.displayName}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

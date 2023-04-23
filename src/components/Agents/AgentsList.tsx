@@ -3,9 +3,14 @@ import {FlatList, StyleSheet} from 'react-native';
 import {Agent} from '../../services/models/valorant-agents';
 import AgentItem from './AgentItem';
 
-function AgentsList(props: {agents: Agent[]}) {
-  let {agents} = props;
-  const renderItem = ({item}: {item: Agent}) => <AgentItem item={item} />;
+function AgentsList(props: {
+  agents: Agent[];
+  onItemPress: (item: Agent) => void;
+}) {
+  let {agents, onItemPress} = props;
+  const renderItem = ({item}: {item: Agent}) => (
+    <AgentItem item={item} onPress={onItemPress} />
+  );
   return (
     <FlatList
       data={agents}
