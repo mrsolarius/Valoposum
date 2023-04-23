@@ -1,21 +1,43 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import Header from '../components/Header';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import {Agent} from '../services/models/valorant-agents';
+import {getAgents} from '../services/valorant.service';
+import AgentsList from '../components/Agents/AgentsList';
+export interface AgentsState {
+  agents: Agent[];
+  loading: boolean;
+}
+export class Agents extends React.Component<{}, AgentsState> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
 
-export class Agents extends React.Component {
+    this.state = {
+      agents: [] as Agent[],
+      loading: true,
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const agents = await getAgents();
+      this.setState({agents, loading: false});
+    } catch (error) {
+      console.error(error);
+    }
+  }
   render() {
+    const {agents, loading} = this.state;
     return (
-      <View style={styles.container}>
-        <Header title={'Agents'} imageUrl={''} />
+      <View style={styles.viewContainer}>
+        {loading ? <ActivityIndicator /> : <AgentsList agents={agents} />}
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  viewContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
   },
 });
