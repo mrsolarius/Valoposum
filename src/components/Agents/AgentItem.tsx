@@ -9,7 +9,14 @@ function AgentItem(props: {item: Agent; onPress: (item: Agent) => void}) {
       <View style={styles.item}>
         <Image source={{uri: item.displayIcon}} style={styles.icon} />
         <View style={styles.details}>
-          <Text style={styles.name}>{item.displayName}</Text>
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: 'bold',
+              color: '#' + item.backgroundGradientColors[1],
+            }}>
+            {item.displayName}
+          </Text>
           <Text style={styles.role}>{item.role.displayName}</Text>
         </View>
       </View>
@@ -25,10 +32,6 @@ const styles = StyleSheet.create({
   },
   details: {
     flex: 1,
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   role: {
     fontSize: 14,

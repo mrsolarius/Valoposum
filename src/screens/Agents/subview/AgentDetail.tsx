@@ -9,16 +9,26 @@ import {
 } from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RouteStackParamList} from '../Agents';
+import {AgentRouteStackParamList} from '../Agents';
 import LinearGradient from 'react-native-linear-gradient';
 
 class AgentDetail extends React.Component<{
-  navigation: NativeStackNavigationProp<RouteStackParamList, 'AgentDetail'>;
-  route: RouteProp<RouteStackParamList, 'AgentDetail'>;
+  navigation: NativeStackNavigationProp<
+    AgentRouteStackParamList,
+    'AgentDetail'
+  >;
+  route: RouteProp<AgentRouteStackParamList, 'AgentDetail'>;
 }> {
   componentDidMount() {
-    const {item} = this.props.route.params;
-    this.props.navigation.setOptions({title: item.displayName});
+    this.props.navigation.setOptions({
+      title: '',
+      headerShown: true,
+      headerStyle: {
+        backgroundColor: 'transparent',
+      },
+      headerTintColor: 'white',
+      headerTransparent: true,
+    });
   }
   render() {
     const agent = this.props.route.params.item;

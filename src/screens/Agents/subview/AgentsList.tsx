@@ -4,14 +4,19 @@ import {Agent} from '../../../services/models/valorant-agents';
 import AgentItem from '../../../components/Agents/AgentItem';
 import {getAgents} from '../../../services/valorant.service';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RouteStackParamList} from '../Agents';
+import {AgentRouteStackParamList} from '../Agents';
 
 export interface AgentsState {
   agents: Agent[];
   loading: boolean;
 }
 class AgentsList extends React.Component<
-  {navigation: NativeStackNavigationProp<RouteStackParamList, 'AgentsList'>},
+  {
+    navigation: NativeStackNavigationProp<
+      AgentRouteStackParamList,
+      'AgentsList'
+    >;
+  },
   AgentsState
 > {
   constructor(props: any) {

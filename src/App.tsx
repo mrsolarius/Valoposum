@@ -9,7 +9,7 @@ import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Maps} from './screens/Maps';
+import {Maps} from './screens/Maps/Maps';
 import {Weapons} from './screens/Weapons';
 import {Agents} from './screens/Agents/Agents';
 import {Skins} from './screens/Skins';
@@ -22,7 +22,6 @@ class App extends Component {
         <Tab.Navigator
           screenOptions={({route}) => ({
             tabBarIcon: ({focused}) => {
-              //https://blog.logrocket.com/react-native-vector-icons-fonts-react-native-app-ui/
               let iconName = '';
 
               switch (route.name) {
@@ -40,7 +39,6 @@ class App extends Component {
                   break;
               }
               focused ? (iconName += '') : (iconName += '-outline');
-              // You can return any component that you like here!
               return <Ionicons name={iconName} size={30} color="#900" />;
             },
             headerShown: false,
