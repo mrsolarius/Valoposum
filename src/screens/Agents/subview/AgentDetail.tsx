@@ -52,8 +52,8 @@ class AgentDetail extends React.Component<{
                   <Text style={styles.name}>{agent.displayName}</Text>
                   <Text style={styles.role}>{agent.role.displayName}</Text>
                   <View style={styles.abilities}>
-                    {agent.abilities.map(ability => (
-                      <View key={ability.slot} style={styles.ability}>
+                    {agent.abilities.map((ability, index) => (
+                      <View key={index} style={styles.ability}>
                         <Image
                           source={{uri: ability.displayIcon}}
                           style={styles.abilityIcon}
@@ -67,7 +67,7 @@ class AgentDetail extends React.Component<{
                 <Text style={styles.description}>{agent.description}</Text>
                 <View style={styles.abilityContainer}>
                   {agent.abilities.map((ability, index) => (
-                    <View style={styles.abilityDetails}>
+                    <View key={index} style={styles.abilityDetails}>
                       <Image
                         source={{uri: ability.displayIcon}}
                         style={styles.abilityBigIcon}

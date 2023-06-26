@@ -10,9 +10,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Maps} from './screens/Maps/Maps';
-import {Weapons} from './screens/Weapons';
+import {Weapons} from './screens/Weapons/Weapons';
 import {Agents} from './screens/Agents/Agents';
-import {Skins} from './screens/Skins';
 
 const Tab = createBottomTabNavigator();
 class App extends Component {
@@ -34,9 +33,6 @@ class App extends Component {
                 case 'Weapons':
                   iconName = 'skull';
                   break;
-                case 'Skins':
-                  iconName = 'shirt';
-                  break;
               }
               focused ? (iconName += '') : (iconName += '-outline');
               return <Ionicons name={iconName} size={30} color="#900" />;
@@ -48,7 +44,6 @@ class App extends Component {
           <Tab.Screen name="Agents" component={Agents} />
           <Tab.Screen name="Maps" component={Maps} />
           <Tab.Screen name="Weapons" component={Weapons} />
-          <Tab.Screen name="Skins" component={Skins} />
         </Tab.Navigator>
       </NavigationContainer>
     );

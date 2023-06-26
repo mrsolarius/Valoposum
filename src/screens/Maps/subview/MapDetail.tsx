@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    height: ScreenHeight - 150,
+    height: ScreenHeight - 125,
   },
   mapTitle: {
     fontSize: 60,

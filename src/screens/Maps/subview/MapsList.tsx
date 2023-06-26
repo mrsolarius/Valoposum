@@ -27,7 +27,9 @@ export class MapsList extends React.Component<
   }
   async componentDidMount() {
     try {
-      const maps = await getMaps();
+      const maps = (await getMaps()).sort((a, b) =>
+        a.displayName.localeCompare(b.displayName),
+      );
       this.setState({maps, loading: false});
     } catch (error) {
       console.error(error);
@@ -45,7 +47,7 @@ export class MapsList extends React.Component<
     }
   };
   render() {
-    let {maps, loading} = this.state;
+    const {maps, loading} = this.state;
     const renderItem = ({item}: {item: MapData}) => (
       <MapItem item={item} onPress={this.onItemPress} />
     );

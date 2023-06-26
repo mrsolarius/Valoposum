@@ -31,7 +31,9 @@ class AgentsList extends React.Component<
   }
   async componentDidMount() {
     try {
-      const agents = await getAgents();
+      const agents = (await getAgents()).sort((a, b) =>
+        a.displayName.localeCompare(b.displayName),
+      );
       this.setState({agents, loading: false});
     } catch (error) {
       console.error(error);
